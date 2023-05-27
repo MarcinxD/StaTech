@@ -31,8 +31,8 @@ const NavLink = ({ path, children }) => (
   </Link>
 );
 const links = [
-  { linkName: 'Productos', path: '/productos' },
-  { linkName: 'Carrito', path: '/carrito' },
+  { linkName: 'Productos', path: '/products' },
+  { linkName: 'Carrito', path: '/cart' },
 ];
 
 const Navbar = () => {
