@@ -19,7 +19,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import { StarIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCartItem } from '../redux/actions/cartActions';
+import { addCartItem } from '../redux/actions/cartAction';
 
 const Rating = ({ rating, numberOfReviews }) => {
   const { iconSize, setIconSize } = useState('14px');
