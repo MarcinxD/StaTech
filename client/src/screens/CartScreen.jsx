@@ -5,7 +5,7 @@ import {
   HStack,
   Link,
   Stack,
-  useColorModeValue,
+  useColorModeValue as mode,
   Spinner,
   Alert,
   AlertTitle,
@@ -51,24 +51,22 @@ const CartScreen = () => {
             align={{ lg: 'flex-start' }}
             spacing={{ base: '8', md: '16' }}
           >
-            <Stack spacing={{base: '8', md: '10'}} flex='2'>
-                <Heading fontSize='2xl' fontWeight='extrabold'>
-                    Carrito
-                </Heading>
+            <Stack spacing={{ base: '8', md: '10' }} flex='2'>
+              <Heading fontSize='2xl' fontWeight='extrabold'>
+                Carrito
+              </Heading>
 
-                <Stack spacing='6'>
-                    {/* CartItem */}
-                </Stack>
+              <Stack spacing='6'>{/* CartItem */}</Stack>
             </Stack>
             <Flex direction='column' align='center' flex='1'>
-                {/* CartOrderSummary */}
+              {/* CartOrderSummary */}
 
-                <HStack mt='6' fontWeight='semibold'>
-                    <p>o</p>
-                    <Link as={ReactLink} to = '/products' color={useColorModeValue('orange.500', 'orange.200')}>
-                        Sigue comprando
-                    </Link>
-                </HStack>
+              <HStack mt='6' fontWeight='semibold'>
+                <p>o</p>
+                <Link as={ReactLink} to='/products' color={mode('orange.500', 'orange.200')}>
+                  Sigue comprando
+                </Link>
+              </HStack>
             </Flex>
           </Stack>
         </Box>
