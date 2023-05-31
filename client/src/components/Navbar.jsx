@@ -17,6 +17,7 @@ import {
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { GiTechnoHeart } from 'react-icons/gi';
+import { useState } from 'react';
 
 const NavLink = ({ path, children }) => (
   <Link
@@ -38,6 +39,7 @@ const links = [
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [ isHovering, setIsHovering ] = useState(false);
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
       <Flex h={16} alignItems='center' justifyContent='space-between'>
@@ -49,14 +51,20 @@ const Navbar = () => {
         />
 
         <HStack>
-          <Link as={ReactLink} to='/'>
+          <Link
+            as={ReactLink}
+            to='/'
+            style={{ textDecoration: 'none' }}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
             <Flex alignItems='center'>
-              <Icon as={GiTechnoHeart} h={6} w={6} color='orange.400' />
+              <Icon as={GiTechnoHeart} h={6} w={6} color={isHovering ? 'cyan.400' : 'orange.400'} />
               <Text fontWeight='extrabold'>StaTech</Text>
             </Flex>
           </Link>
 
-          <HStack as='nav' spacing={4} display={{base: 'none', md: 'flex'}}>
+          <HStack as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
             {links.map((link) => (
               <NavLink key={link.linkName} path={link.path}>
                 {link.linkName}
@@ -79,7 +87,7 @@ const Navbar = () => {
             as={ReactLink}
             to='/register'
             m={2}
-            display={{base: 'none', md: 'inline-flex' }}
+            display={{ base: 'none', md: 'inline-flex' }}
             fontSize='sm'
             fontWeight={600}
             _hover={{ bg: 'orange.400' }}
@@ -98,7 +106,9 @@ const Navbar = () => {
                 {link.linkName}
               </NavLink>
             ))}
-            <NavLink key='sign up' path='/register'>Regístrate</NavLink>
+            <NavLink key='sign up' path='/register'>
+              Regístrate
+            </NavLink>
           </Stack>
         </Box>
       ) : null}
