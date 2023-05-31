@@ -14,7 +14,7 @@ const CartOrderSummary = () => {
   const checkoutHandler = () => {
     setButtonLoading(true);
     navigate('/checkout');
-  }
+  };
 
   return (
     <Stack spacing='8' borderWidth='1px' rounded='lg' padding='8' w='full'>
@@ -40,8 +40,13 @@ const CartOrderSummary = () => {
             )}
           </Text>
         </Flex>
-        <Flex fontSize='lg' fontWeight='semibold'>
-          {subtotal <= 1000 ? Number(subtotal) + Number(standardShipping) : subtotal}
+        <Flex justify='space-between'>
+          <Text fontSize='xl' fontWeight='extrabold'>
+            Total
+          </Text>
+          <Text fontSize='xl' fontWeight='extrabold'>
+            {subtotal <= 1000 ? Number(subtotal) + Number(standardShipping) : subtotal}€
+          </Text>
         </Flex>
       </Stack>
       <Button
@@ -53,7 +58,7 @@ const CartOrderSummary = () => {
         rightIcon={<FaArrowRight />}
         isLoading={buttonLoading}
         onClick={() => checkoutHandler()}
-      ></Button>
+      >Finalizar compra y pagar</Button>
     </Stack>
   );
 };
