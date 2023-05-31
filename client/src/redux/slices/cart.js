@@ -45,7 +45,7 @@ export const cartSlice = createSlice({
       state.loading = false;
     },
     cartItemRemoval: (state, {payload}) => {
-      state.card = [...state.cart].filter((item) => item.id !== payload);
+      state.cart = [...state.cart].filter((item) => item.id !== payload);
       updateLocalStorage(state.cart);
       state.subtotal = calculateSubtotal(state.cart)
       state.loading = false;
