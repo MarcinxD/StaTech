@@ -39,8 +39,8 @@ import {
                   Product
                 </Text>
                 <Stack spacing='3' shouldWrapChildren>
-                  <Button variant='link'>How it works</Button>
-                  <Button variant='link'>Pricing</Button>
+                  <Button variant='link'>Cómo funciona</Button>
+                  <Button variant='link'>Precios</Button>
                 </Stack>
               </Stack>
               <Stack spacing='4' minW='36' flex='1'>
@@ -48,9 +48,9 @@ import {
                   Legal
                 </Text>
                 <Stack spacing='3' shouldWrapChildren>
-                  <Button variant='link'>Privacy</Button>
-                  <Button variant='link'>Terms</Button>
-                  <Button variant='link'>License</Button>
+                  <Button variant='link'>Privacidad</Button>
+                  <Button variant='link'>Términos</Button>
+                  <Button variant='link'>Licencia</Button>
                 </Stack>
               </Stack>
             </Stack>
