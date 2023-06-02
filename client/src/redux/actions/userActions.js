@@ -41,7 +41,7 @@ export const register = (name, email, password) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post('/api/users/register', { email, password }, config);
+    const { data } = await axios.post('/api/users/register', { name, email, password }, config);
     dispatch(userLogin(data));
     localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
