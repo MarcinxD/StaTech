@@ -19,13 +19,13 @@ const PaymentErrorModal = ({ isOpen, onClose }) => {
           <ModalBody>
             <Wrap justify='center' direction='column' align='center' mt='20px'>
               <Alert
+                h='200px'
                 status='error'
                 variant='subtle'
                 flexDirection='column'
                 alignItems='center'
                 justifyContent='center'
                 textAlign='center'
-                height='auto'
               >
                 <AlertIcon boxSize='55px' />
                 <AlertTitle pt='8px' fontSize='xl'>

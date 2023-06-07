@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setLoading, setError, userLogin, userLogout, updateUserProfile, resetUpdate } from '../slices/user';
+import { setLoading, setError, userLogin, userLogout, updateUserProfile, resetUpdate, setUserOrders } from '../slices/user';
 
 export const login = (email, password) => async (dispatch) => {
   dispatch(setLoading(true));
@@ -69,7 +69,7 @@ export const updateProfile = (id, name, email, password) => async (dispatch, get
         'Content-Type': 'application/json',
       },
     };
-    const {data} = await axios.put(`/api/users/profile/${id}`, {_id: id, name, email, password}, config);
+    const { data } = await axios.put(`/api/users/profile/${id}`, { _id: id, name, email, password }, config);
     localStorage.setItem('userInfo', JSON.stringify(data));
     dispatch(updateUserProfile(data));
   } catch (error) {
@@ -85,7 +85,35 @@ export const updateProfile = (id, name, email, password) => async (dispatch, get
   }
 };
 
-
-export const resetUpdateSuccess = () => async(dispatch) => {
+export const resetUpdateSuccess = () => async (dispatch) => {
   dispatch(resetUpdate());
+};
+
+
+export const getUserOrders = () => async(dispatch, getState) => {
+  dispatch(setLoading(true));
+  const {
+    user: { userInfo },
+  } = getState();
+
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+    const {data} = await axios.get(`/api/users/${userInfo._id}`, config);
+    dispatch(setUserOrders(data))
+  } catch (error) {
+    dispatch(
+      setError(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+          ? error.message
+          : 'Se ha producido un error desconocido, pruebe otra vez más tarde.'
+      )
+    );
+  }
 }

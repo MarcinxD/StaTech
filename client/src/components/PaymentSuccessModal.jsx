@@ -43,18 +43,19 @@ const PaymentSuccessModal = ({ isOpen, onClose }) => {
                 height='auto'
               >
                 <AlertIcon boxSize='55px' />
-                <AlertTitle pt='8px' fontSize='xl'>¡Pago realizado con éxito!</AlertTitle>
-                <AlertDescription>A partir de aquí, puedes ir a:</AlertDescription>
+                <AlertTitle pt='8px' fontSize='xl'>
+                  ¡Pago realizado con éxito!
+                </AlertTitle>
                 <Stack mt='20px' minW='200px'>
-                    <Button colorScheme='teal' variant='outline' as={ReactLink} to='/your-orders'>
-                        Tu pedido
-                    </Button>
-                    <Button colorScheme='teal' variant='outline' as={ReactLink} to='/products'>
-                        Productos
-                    </Button>
-                    <Button colorScheme='teal' variant='outline' onClick={logoutHandler()}>
-                        Cerrar sesión
-                    </Button>
+                  <Button colorScheme='teal' variant='outline' as={ReactLink} to='/your-orders'>
+                    Tu pedido
+                  </Button>
+                  <Button colorScheme='teal' variant='outline' as={ReactLink} to='/products'>
+                    Productos
+                  </Button>
+                  <Button colorScheme='teal' variant='outline' onClick={logoutHandler}>
+                    Cerrar sesión
+                  </Button>
                 </Stack>
               </Alert>
             </Wrap>

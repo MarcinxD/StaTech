@@ -24,7 +24,7 @@ const PayPalButton = ({total, onPaymentSuccess, onPaymentError, disabled}) => {
           });
         }}
         onError={(err) => {
-          onPaymentError(err);
+          onPaymentError();
         }}
       />
     </PayPalScriptProvider>

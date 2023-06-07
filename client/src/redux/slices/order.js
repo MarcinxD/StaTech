@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState = {
   loading: false,
-  error: null,
+  error: true,
   shippingAddress: null,
   orderInfo: null,
 };
@@ -31,4 +31,4 @@ export const orderSlice = createSlice({
 export const { setLoading, setError, shippingAddressAdd, clearOrder } = orderSlice.actions;
 export default orderSlice.reducer;
 
-export const userSelector = (state) => state.order;
+export const orderSelector = (state) => state.order;
