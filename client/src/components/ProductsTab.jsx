@@ -5,7 +5,6 @@ import {
   Table,
   Thead,
   Tbody,
-  useDisclosure,
   Alert,
   Stack,
   Spinner,
@@ -21,16 +20,14 @@ import {
   AccordionPanel,
 } from '@chakra-ui/react';
 
-import { useEffect, useRef } from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, resetProductError } from '../redux/actions/productActions';
-import ConfirmRemoveAlert from './ConfirmRemoveAlert';
+
 import ProductTableItem from './ProductTableItem';
 import AddNewProduct from './AddNewProduct';
 
 const ProductsTab = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = useRef();
   const dispatch = useDispatch();
   const admin = useSelector((state) => state.admin);
   const { error, loading } = admin;
