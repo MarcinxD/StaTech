@@ -26,8 +26,7 @@ const loginUser = asyncHandler(async (req, res) => {
       createdAt: user.createdAt,
     });
   } else {
-    res.status(401);
-    throw new Error('Error en el inicio de sesión.');
+    res.status(401).send('Error en el inicio de sesión.');
   }
 });
 
@@ -38,8 +37,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const userExists = await User.findOne({ email });
   if (userExists) {
-    res.status(400);
-    throw new Error('Ya existe una cuenta con esta dirección de correo.');
+    res.status(400).send('Ya existe una cuenta con esta dirección de correo.');
   }
 
   const user = await User.create({
@@ -57,8 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
       token: genToken(user._id),
     });
   } else {
-    res.json(400);
-    throw new Error('Datos de usuario inválidos.');
+    res.json(400).send('Datos de usuario inválidos.');
   }
 });
 
