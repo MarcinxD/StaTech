@@ -179,7 +179,7 @@ const ProductScreen = () => {
               <>
                 <Tooltip label={hasUserReviewed() ? 'Ya has dejado una reseña en este producto.' : ''} fontSize='md'>
                   <Button
-                    disabled={hasUserReviewed()}
+                    isDisabled={hasUserReviewed()}
                     my='20px'
                     w='140px'
                     colorScheme='orange'

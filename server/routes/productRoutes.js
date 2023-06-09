@@ -2,7 +2,7 @@ import express from 'express';
 import Product from '../models/Product.js';
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
-import protectRoute from '../Middleware/authMiddleware.js';
+import { protectRoute } from '../Middleware/authMiddleware.js';
 
 const productRoutes = express.Router();
 
@@ -51,10 +51,10 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
     await product.save();
-    res.status(201).json({message: 'Gracias por añadir una reseña.'});
+    res.status(201).json({ message: 'Gracias por añadir una reseña.' });
   } else {
-    res.status(404)
-    throw new Error('Producto no encontrado.')
+    res.status(404);
+    throw new Error('Producto no encontrado.');
   }
 });
 

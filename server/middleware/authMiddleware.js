@@ -13,14 +13,23 @@ const protectRoute = asyncHandler(async (req, res, next) => {
 
       next();
     } catch (error) {
-        res.status(401);
-        throw new Error('No autorizado, token fallido.');
+      res.status(401);
+      throw new Error('No autorizado, token fallido.');
     }
   }
-  if(!token){
+  if (!token) {
     res.status(401);
     throw new Error('No autorizado, no hay token');
   }
 });
 
-export default protectRoute;
+const admin = (req, res, next) => {
+  if (req.user && req.user.isAdmin !== 'false') {
+    next();
+  } else {
+    res.status(401);
+    throw new Error('No autorizado como administrador.');
+  }
+};
+
+export {protectRoute, admin};
