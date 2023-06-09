@@ -1,42 +1,66 @@
-import express from "express";
-import AsyncHandler from "express-async-handler";
-import Order from "../models/Order.js";
-import { protectRoute } from "../Middleware/authMiddleware.js";
-
+import express from 'express';
+import asyncHandler from 'express-async-handler';
+import Order from '../models/Order.js';
+import { admin, protectRoute } from '../Middleware/authMiddleware.js';
 
 const orderRoutes = express.Router();
 
-const createOrder = AsyncHandler(async(req, res) => {
-    const {orderItems, shippingAddress, paymentMethod, shippingPrice, totalPrice, paymentDetails, userInfo} = req.body;
+const createOrder = asyncHandler(async (req, res) => {
+  const { orderItems, shippingAddress, paymentMethod, shippingPrice, totalPrice, paymentDetails, userInfo } = req.body;
 
-    if(orderItems && orderItems.length === 0) {
-        res.status(400);
-        throw new Error('No hay datos en el pedido.')
-    }else{
-        const order = new Order({
-            orderItems,
-            user: userInfo._id,
-            username: userInfo.name,
-            email: userInfo.email,
-            shippingAddress,
-            paymentMethod,
-            paymentDetails,
-            shippingPrice,
-            totalPrice,
-        });
+  if (orderItems && orderItems.length === 0) {
+    res.status(400);
+    throw new Error('No hay datos en el pedido.');
+  } else {
+    const order = new Order({
+      orderItems,
+      user: userInfo._id,
+      username: userInfo.name,
+      email: userInfo.email,
+      shippingAddress,
+      paymentMethod,
+      paymentDetails,
+      shippingPrice,
+      totalPrice,
+    });
 
-        const createOrder = await order.save();
-        res.status(201).json(createOrder);
-    }
-})
+    const createOrder = await order.save();
+    res.status(201).json(createOrder);
+  }
+});
+
+const getOrders = async (req, res) => {
+  const orders = await Order.find({});
+  res.json(orders);
+};
+
+const deleteOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findByIdAndDelete(req.params.id);
+
+  if (order) {
+    res.json(order);
+  } else {
+    res.status(404);
+    throw new Error('Pedido no encontrado');
+  }
+});
+
+const setDelivered = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    order.isDelivered = true;
+    const updateOrder = await order.save();
+    res.json(updateOrder);
+  } else {
+    res.status(404);
+    throw new Error('El pedido no ha podido ser actualizado.');
+  }
+});
 
 orderRoutes.route('/').post(protectRoute, createOrder);
+orderRoutes.route('/:id').delete(protectRoute, admin, deleteOrder);
+orderRoutes.route('/:id').put(protectRoute, admin, setDelivered);
+orderRoutes.route('/').get(protectRoute, admin, getOrders);
 
 export default orderRoutes;
-
-
-
-
-
-
-
