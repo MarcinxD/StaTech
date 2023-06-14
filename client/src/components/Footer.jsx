@@ -61,7 +61,7 @@ import {
               <Stack spacing='4' direction={{ base: 'column', sm: 'row' }} maxW={{ lg: '360px' }}>
                 <Input placeholder='Introduce tu email' type='email' required />
                 <Button variant='primary' type='submit' flexShrink={0}>
-                  Subscribe
+                 Suscríbete
                 </Button>
               </Stack>
             </Stack>
