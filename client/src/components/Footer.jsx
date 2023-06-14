@@ -56,10 +56,10 @@ import {
             </Stack>
             <Stack spacing='4'>
               <Text fontSize='sm' fontWeight='semibold' color='subtle'>
-                Stay up to date
+                Mantente informado
               </Text>
               <Stack spacing='4' direction={{ base: 'column', sm: 'row' }} maxW={{ lg: '360px' }}>
-                <Input placeholder='Enter your email' type='email' required />
+                <Input placeholder='Introduce tu email' type='email' required />
                 <Button variant='primary' type='submit' flexShrink={0}>
                   Subscribe
                 </Button>
