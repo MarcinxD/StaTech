@@ -3,7 +3,7 @@ import User from '../models/User.js';
 import Order from '../models/Order.js';
 import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
-import { protectRoute, admin } from '../Middleware/authMiddleware.js';
+import { protectRoute, admin } from '../middleware/authMiddleware.js';
 
 const userRoutes = express.Router();
 
