@@ -67,7 +67,7 @@ const YourOrdersScreen = () => {
                     <Td>{order._id}</Td>
                     <Td>{new Date(order.createdAt).toDateString()}</Td>
                     <Td>
-                      {order.totalPrice}€ a través de {order.paymentMethod}
+                      {order.totalPrice}€ 
                     </Td>
                     <Td>
                       {order.orderItems.map((item) => (

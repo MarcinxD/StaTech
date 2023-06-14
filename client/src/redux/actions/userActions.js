@@ -16,8 +16,8 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch(
       setError(
-        error.response && error.response.data.message
-          ? error.response.data.message
+        error.response && error.response.data
+          ? error.response.data
           : error.message
           ? error.message
           : 'Se ha producido un error desconocido, pruebe otra vez más tarde.'

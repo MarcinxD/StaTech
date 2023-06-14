@@ -88,7 +88,6 @@ const OrdersTab = () => {
                   <Th>Email</Th>
                   <Th>Información de envío</Th>
                   <Th>Productos pedidos</Th>
-                  <Th>Modo de pago</Th>
                   <Th>Precio envío</Th>
                   <Th>Total</Th>
                   <Th>Entregado</Th>
@@ -119,7 +118,6 @@ const OrdersTab = () => {
                           </Text>
                         ))}
                       </Td>
-                      <Td>{order.paymentMethod}</Td>
                       <Td>{order.shippingPrice}</Td>
                       <Td>{order.totalPrice}</Td>
                       <Td>{order.isDelivered ? <CheckCircleIcon /> : 'Pendiente'}</Td>
